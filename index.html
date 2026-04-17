@@ -3,33 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10 Months 💖</title>
+<title>For You ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  color: white;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow: hidden;
 }
 
-/* layout with image + text side */
-.box {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+/* floating hearts */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 8s linear infinite;
+  opacity: 0.7;
 }
 
-img {
-  width: 180px;
-  border-radius: 15px;
-}
-
-.text {
-  max-width: 180px;
-  font-size: 14px;
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
 }
 
 /* container */
@@ -37,122 +31,143 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px);
   padding: 20px;
   border-radius: 20px;
-  backdrop-filter: blur(15px);
   width: 90%;
-  max-width: 400px;
+  max-width: 420px;
   text-align: center;
-  transition: 0.6s;
+  transition: all 0.7s ease;
+  color: black;
 }
 
 .hidden {
   opacity: 0;
+  transform: translate(-50%, -30%) scale(0.85);
   pointer-events: none;
-  transform: translate(-50%, -40%) scale(0.9);
 }
 
+/* highlight text */
+.container p,
+.container h1,
+.container h2,
+.container b {
+  background: rgba(255,255,255,0.75);
+  padding: 5px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  color: black;
+}
+
+/* image */
+img {
+  width: 200px;
+  border-radius: 15px;
+  margin: 10px 0;
+}
+
+/* inputs */
 input {
-  padding: 8px;
+  padding: 10px;
   border-radius: 10px;
   border: none;
-  margin-top: 10px;
+  width: 80%;
 }
 
+/* buttons */
 button {
   margin-top: 10px;
-  padding: 8px 15px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
   background: #ff4f91;
   color: white;
+}
+
+/* instruction */
+.instruction {
+  font-size: 13px;
 }
 </style>
 </head>
 
 <body>
 
+<script>
+for(let i=0;i<25;i++){
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = (5 + Math.random()*5) + "s";
+  document.body.appendChild(h);
+}
+</script>
+
 <!-- PAGE 1 -->
 <div class="container" id="p1">
   <h2>Hey ❤️</h2>
-  <p>Before you see everything… solve this 😉</p>
-
-  <p><b>Once in a minute, twice in a moment?</b></p>
-  <input id="a1">
-  <button onclick="c1()">Unlock 🔓</button>
+  <p class="instruction">Tap start and solve questions to unlock memories</p>
+  <button onclick="next('p1','p2')">Start</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="container hidden" id="p2">
-  <div class="box">
-    <img src="img1.jpg">
-    <div class="text">
-      I still remember this moment…  
-      I don’t say it often, but I’m really grateful you came into my life.
-    </div>
-  </div>
+  <img src="img1.jpg">
+  <p>I’m really grateful that you came into my life ❤️</p>
 
-  <p>Next riddle 😉</p>
-  <p>I speak without a mouth…?</p>
-  <input id="a2">
-  <button onclick="c2()">Next ➜</button>
+  <p><b>Hint:</b> First letter of "moment"</p>
+  <input id="a1">
+  <button onclick="c1()">Unlock</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="container hidden" id="p3">
-  <div class="box">
-    <img src="img2.jpg">
-    <div class="text">
-      Your smile in this picture…  
-      it literally fixes my worst days.
-    </div>
-  </div>
+  <img src="img2.jpg">
+  <p>Your smile fixes everything 💕</p>
 
-  <p>What has keys but no locks?</p>
-  <input id="a3">
-  <button onclick="c3()">Next ➜</button>
+  <p><b>Hint:</b> I repeat what you say</p>
+  <input id="a2">
+  <button onclick="c2()">Next</button>
 </div>
 
 <!-- PAGE 4 -->
 <div class="container hidden" id="p4">
-  <div class="box">
-    <img src="img3.jpg">
-    <div class="text">
-      These small moments with you…  
-      they mean more than anything else.
-    </div>
-  </div>
+  <img src="img3.jpg">
+  <p>These small moments mean everything ❤️</p>
 
-  <p>I have hands but can’t clap. What am I?</p>
-  <input id="a4">
-  <button onclick="c4()">Next ➜</button>
+  <p><b>Hint:</b> Musical instrument with keys</p>
+  <input id="a3">
+  <button onclick="c3()">Next</button>
 </div>
 
 <!-- PAGE 5 -->
 <div class="container hidden" id="p5">
-  <div class="box">
-    <img src="img4.jpg">
-    <div class="text">
-      Every memory with you feels special.  
-      I never want to lose this.
-    </div>
-  </div>
+  <img src="img4.jpg">
+  <p>Every memory with you is special ✨</p>
 
-  <p>What gets wetter the more it dries?</p>
+  <p><b>Hint:</b> It shows time</p>
+  <input id="a4">
+  <button onclick="c4()">Next</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="container hidden" id="p6">
+  <img src="img5.jpg">
+  <p>You’re the best thing in my life 💖</p>
+
+  <p><b>Hint:</b> Used after bathing</p>
   <input id="a5">
-  <button onclick="c5()">Next ➜</button>
+  <button onclick="c5()">Final</button>
 </div>
 
 <!-- FINAL -->
-<div class="container hidden" id="p6">
-  <h2>Happy 10 Months 💖</h2>
+<div class="container hidden" id="p7">
+  <h2>Happy 10 Months ❤️</h2>
   <img src="img10.jpg">
-  <p>
-    I’m genuinely lucky to have you.  
-    And I mean it.
-  </p>
+  <p>I’m really lucky to have you.</p>
 </div>
 
 <script>
@@ -161,26 +176,11 @@ function next(c,n){
   document.getElementById(n).classList.remove("hidden");
 }
 
-function c1(){
-  if(a1.value.toLowerCase()=="m") next('p1','p2');
-  else alert("Try again 😉");
-}
-function c2(){
-  if(a2.value.toLowerCase()=="echo") next('p2','p3');
-  else alert("Nope 😛");
-}
-function c3(){
-  if(a3.value.toLowerCase()=="piano") next('p3','p4');
-  else alert("Wrong 😝");
-}
-function c4(){
-  if(a4.value.toLowerCase()=="clock") next('p4','p5');
-  else alert("Try again 😉");
-}
-function c5(){
-  if(a5.value.toLowerCase()=="towel") next('p5','p6');
-  else alert("Last one 😌");
-}
+function c1(){ if(a1.value.toLowerCase()=="m") next('p2','p3'); else alert("Try again"); }
+function c2(){ if(a2.value.toLowerCase()=="echo") next('p3','p4'); else alert("Try again"); }
+function c3(){ if(a3.value.toLowerCase()=="piano") next('p4','p5'); else alert("Try again"); }
+function c4(){ if(a4.value.toLowerCase()=="clock") next('p5','p6'); else alert("Try again"); }
+function c5(){ if(a5.value.toLowerCase()=="towel") next('p6','p7'); else alert("Try again"); }
 </script>
 
 </body>
