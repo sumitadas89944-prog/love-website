@@ -13,7 +13,7 @@ body {
   overflow: hidden;
 }
 
-/* hearts */
+/* floating hearts */
 .heart {
   position: absolute;
   font-size: 18px;
@@ -103,6 +103,11 @@ button {
 
 <body>
 
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 for(let i=0;i<30;i++){
   let h=document.createElement("div");
@@ -121,8 +126,7 @@ for(let i=0;i<30;i++){
     <h2>Happy 10th Anniversary My Cutiee Baby 💖</h2>
     <p>
       Before you continue… I made something special for you 🥺  
-      Just follow the instructions and solve each small question…  
-      and slowly unlock all our beautiful memories together 💕
+      Just tap the button and solve small questions to unlock our memories 💕
     </p>
   </div>
   <div class="bottom">
@@ -224,9 +228,15 @@ my cutieee baby chan🥺 actually lol i struggled a lot in making this website s
 
 <script>
 function next(c,n){
+  let music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.volume = 0.3;
+    music.play();
+  }
   document.getElementById(c).classList.add("hidden");
   document.getElementById(n).classList.remove("hidden");
 }
+
 function c1(){ if(a1.value.toLowerCase()=="m") next('p2','p3'); else alert("Try again 🥺"); }
 function c2(){ if(a2.value.toLowerCase()=="echo") next('p3','p4'); else alert("Try again 🥺"); }
 function c3(){ if(a3.value.toLowerCase()=="piano") next('p4','p5'); else alert("Try again 🥺"); }
